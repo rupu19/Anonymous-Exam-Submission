@@ -1,0 +1,21 @@
+managed/counter/keys:
+total 10236
+drwxrwxrwx 1 light5 light5    4096 Jul 24 19:35 .
+drwxrwxrwx 1 light5 light5    4096 Jul 24 19:35 ..
+-rwxrwxrwx 1 light5 light5   22436 Jul 24 19:35 getCount.prover
+-rwxrwxrwx 1 light5 light5    1351 Jul 24 19:35 getCount.verifier
+-rwxrwxrwx 1 light5 light5 5220866 Jul 24 19:35 increment.prover
+-rwxrwxrwx 1 light5 light5    2119 Jul 24 19:35 increment.verifier
+-rwxrwxrwx 1 light5 light5 5220565 Jul 24 19:35 reset.prover
+-rwxrwxrwx 1 light5 light5    2119 Jul 24 19:35 reset.verifier
+
+managed/counter/zkir:
+total 20
+drwxrwxrwx 1 light5 light5 4096 Jul 24 19:35 .
+drwxrwxrwx 1 light5 light5 4096 Jul 24 19:35 ..
+-rwxrwxrwx 1 light5 light5   73 Jul 24 19:35 getCount.bzkir
+-rwxrwxrwx 1 light5 light5  992 Jul 24 19:35 getCount.zkir
+-rwxrwxrwx 1 light5 light5  430 Jul 24 19:35 increment.bzkir
+-rwxrwxrwx 1 light5 light5 6472 Jul 24 19:35 increment.zkir
+-rwxrwxrwx 1 light5 light5  380 Jul 24 19:35 reset.bzkir
+-rwxrwxrwx 1 light5 light5 5632 Jul 24 19:35 reset.zkir

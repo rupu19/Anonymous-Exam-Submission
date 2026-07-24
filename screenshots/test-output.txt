@@ -1,0 +1,15 @@
+
+> anonymous-exam-submission@1.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /mnt/c/Anonymous Exam Submission
+
+Sourcemap for "/mnt/c/Anonymous Exam Submission/managed/counter/contract/index.js" points to missing source files
+ ✓ tests/counter.test.ts (4 tests) 93ms
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  19:35:32
+   Duration  3.73s (transform 147ms, setup 0ms, collect 838ms, tests 93ms, environment 0ms, prepare 1.90s)
+
