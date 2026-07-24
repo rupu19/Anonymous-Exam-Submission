@@ -1,0 +1,24 @@
+{
+  "name": "anonymous-exam-submission",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Anonymous Exam Submission — Midnight Compact counter with private witness auth",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "compile": "compact compile contracts/counter.compact managed/counter",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "network": "echo \"Use mn-demo for network deploy helpers: cd mn-demo && npm run network\""
+  },
+  "dependencies": {
+    "@midnight-ntwrk/compact-runtime": "0.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0"
+  }
+}
