@@ -1,0 +1,78 @@
+/*
+ * Anonymous Exam Submission — Counter contract
+ *
+ * PUBLIC (on-chain, visible to anyone):
+ *   - ledger.count  — the current counter value (Uint<64>)
+ *   - ledger.round  — round counter used for owner commitment rotation
+ *   - ledger.owner  — public commitment (hash) of the last authorized updater
+ *   - Any value wrapped in disclose() that is written to the ledger
+ *
+ * PRIVATE (witness / circuit inputs — never appear on-chain unless disclosed):
+ *   - secretKey() witness — caller's private secret key material
+ *   - Circuit argument `amount` starts private; only the disclosed delta
+ *     that updates `count` becomes public when we intentionally disclose it
+ *
+ * PROVES WITHOUT REVEALING:
+ *   - Caller knows the secretKey corresponding to the stored owner commitment
+ *   - Increment/reset logic is valid without exposing the raw secret key
+ */
+
+pragma language_version >= 0.23;
+
+import CompactStandardLibrary;
+
+// Public ledger state
+export ledger count: Uint<64>;
+export ledger round: Counter;
+export ledger owner: Bytes<32>;
+
+// Private witness — provided by the host; never stored on-chain as raw bytes
+witness secretKey(): Bytes<32>;
+
+circuit ownerCommitment(r: Field, sk: Bytes<32>): Bytes<32> {
+  return persistentHash<Vector<3, Bytes<32>>>(
+    [pad(32, "anonymous-exam:counter:owner:"), r as Bytes<32>, sk]
+  );
+}
+
+constructor() {
+  count = disclose(0 as Uint<64>);
+  owner = disclose(ownerCommitment(round, secretKey()));
+}
+
+/**
+ * Increment the public counter by a private amount.
+ * Discloses only the resulting count (and refreshed owner commitment),
+ * not the caller's secret key.
+ */
+export circuit increment(amount: Uint<64>): [] {
+  const sk = secretKey();
+  const pk = ownerCommitment(round, sk);
+  assert(owner == pk, "unauthorized: secret does not match owner");
+  assert(disclose(amount) > 0 as Uint<64>, "amount must be positive");
+
+  count = disclose((count + amount) as Uint<64>);
+  // Rotate round so the next owner commitment differs (privacy hygiene)
+  round.increment(1);
+  owner = disclose(ownerCommitment(round, sk));
+}
+
+/**
+ * Read the public counter value.
+ */
+export circuit getCount(): Uint<64> {
+  return count;
+}
+
+/**
+ * Reset the counter to zero. Requires the same private secret as owner.
+ */
+export circuit reset(): [] {
+  const sk = secretKey();
+  const pk = ownerCommitment(round, sk);
+  assert(owner == pk, "unauthorized: secret does not match owner");
+
+  count = disclose(0 as Uint<64>);
+  round.increment(1);
+  owner = disclose(ownerCommitment(round, sk));
+}
