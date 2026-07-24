@@ -1,0 +1,6 @@
+✅ Contract deployed successfully!
+
+Contract Address: 5b18df35c759f1231b531137700cc03f52f50d1d017d8ad3efe1057bbb436509
+
+Network: preprod
+Saved to .midnight-state.json
