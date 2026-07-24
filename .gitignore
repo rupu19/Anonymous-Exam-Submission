@@ -1,0 +1,12 @@
+node_modules/
+**/node_modules/
+dist/
+.midnight-state.json
+.midnight-wallet-state/
+**/.midnight-state.json
+**/.midnight-wallet-state/
+*.log
+.env
+.env.*
+!.env.example
+screenshots/image.png
