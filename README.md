@@ -72,7 +72,7 @@ netlify deploy --prod --dir=dist
 The live app reads `VITE_CONTRACT_ADDRESS` (defaults to the Preprod address above).
 
 ## Demo Video
-[PLACEHOLDER — I will add the link after recording]
+https://youtu.be/2cqf9C8fBq8
 
 ## Screenshots
 
@@ -136,7 +136,7 @@ Open to developers who have completed Level 1 or have equivalent experience, wit
 | **Public GitHub repository** | https://github.com/rupu19/Anonymous-Exam-Submission |
 | **Live demo** | https://anonymous-exam-submission.vercel.app |
 | **Preprod contract address** | `afcffcebb57c90948e51acfde87e30d970d39dda004aaed058ede9df121f505c` |
-| **Demo video** | *[Add your YouTube link here — wallet connect + successful circuit call]* |
+| **Demo video** | https://youtu.be/2cqf9C8fBq8 |
 | **Privacy claim** | Documented above under **Privacy Claim** / **Privacy Model** |
 | **Meaningful commits** | 21+ (exceeds the minimum of 8) |
 
@@ -144,7 +144,7 @@ Open to developers who have completed Level 1 or have equivalent experience, wit
 - [x] Public GitHub repository with README
 - [x] Live demo link (Vercel)
 - [x] Deployed Preprod contract address (verifiable on-chain)
-- [ ] Demo video: wallet connect + a successful circuit call *(YouTube link TBD)*
+- [x] Demo video: wallet connect + a successful circuit call — https://youtu.be/2cqf9C8fBq8
 - [x] README documenting the privacy claim
 - [x] Minimum 8 meaningful commits
 
