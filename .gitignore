@@ -1,12 +1,18 @@
 node_modules/
 **/node_modules/
 dist/
+.vite/
 .midnight-state.json
 .midnight-wallet-state/
 **/.midnight-state.json
 **/.midnight-wallet-state/
+.counter-deploy-secret-*.bin
 *.log
 .env
 .env.*
 !.env.example
 screenshots/image.png
+# ZK artifacts are copied from managed/counter at build/dev time
+public/keys/
+public/zkir/
+public/compiler/
