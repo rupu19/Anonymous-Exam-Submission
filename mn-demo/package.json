@@ -10,6 +10,8 @@
     "build": "npx tsc --noEmit || true",
     "setup": "npx tsx src/setup.ts",
     "deploy": "npx tsx src/deploy.ts",
+    "deploy:counter": "npx tsx src/deploy-counter.ts",
+    "sync:counter-artifacts": "node -e \"const fs=require('fs');const p=require('path');const src=p.resolve('..','managed','counter');const dest=p.resolve('contracts','managed','counter');fs.rmSync(dest,{recursive:true,force:true});fs.cpSync(src,dest,{recursive:true});console.log('synced managed/counter → contracts/managed/counter');\"",
     "cli": "npx tsx src/cli.ts",
     "check-balance": "npx tsx src/check-balance.ts",
     "network": "npx tsx src/network.ts",
