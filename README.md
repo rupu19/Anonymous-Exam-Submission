@@ -2,7 +2,7 @@
 > Privacy-preserving exam counter dApp on Midnight — prove authorization without revealing your secret.
 
 ## Live Demo
-[PASTE LIVE URL AFTER DEPLOYING FRONTEND]
+https://anonymous-exam-submission.vercel.app
 
 ## Contract Address
 | Network  | Address                                                            |
@@ -104,3 +104,52 @@ The live app reads `VITE_CONTRACT_ADDRESS` (defaults to the Preprod address abov
 ├── README.md
 └── package.json
 ```
+
+---
+
+# Level 2 — The First Thread of Light
+
+> You wire your contract to a real frontend and bring Lace onto Preprod. For the first time your work has a face the world can glimpse — a thin, deliberate crescent. Most of it still rests in shadow; you have simply chosen to reveal the edge.
+
+**Mission this cycle:** Contract wired to a frontend UI, with Lace connected on Preprod.
+
+## Who Can Join
+Open to developers who have completed Level 1 or have equivalent experience, with a deployed Compact contract and readiness to learn the Midnight.js SDK and DApp connector.
+
+## What You Will Learn
+- Midnight.js SDK and the DApp connector API
+- Connecting and disconnecting the Lace wallet
+- Calling a circuit from the frontend and handling its result
+- Managing local private state; deploying to Preprod
+
+## Requirements to Pass
+- Lace wallet connect / disconnect implemented
+- Circuit called successfully from the frontend
+- An observable privacy behavior (something proven without being shown)
+- Contract deployed to Preprod with a verifiable address
+- Minimum 8 meaningful commits
+
+## Level 2 Submission
+
+| Field | Value |
+|-------|--------|
+| **Public GitHub repository** | https://github.com/rupu19/Anonymous-Exam-Submission |
+| **Live demo** | https://anonymous-exam-submission.vercel.app |
+| **Preprod contract address** | `afcffcebb57c90948e51acfde87e30d970d39dda004aaed058ede9df121f505c` |
+| **Demo video** | *[Add your YouTube link here — wallet connect + successful circuit call]* |
+| **Privacy claim** | Documented above under **Privacy Claim** / **Privacy Model** |
+| **Meaningful commits** | 21+ (exceeds the minimum of 8) |
+
+### Submission Checklist
+- [x] Public GitHub repository with README
+- [x] Live demo link (Vercel)
+- [x] Deployed Preprod contract address (verifiable on-chain)
+- [ ] Demo video: wallet connect + a successful circuit call *(YouTube link TBD)*
+- [x] README documenting the privacy claim
+- [x] Minimum 8 meaningful commits
+
+### Level 2 features in this repo
+- **Lace connect / disconnect** — `src/components/WalletConnect.tsx` via `@midnight-ntwrk/dapp-connector-api`
+- **Circuit calls from the frontend** — `getCount` / `increment` / `reset` in `src/components/CircuitCall.tsx` + `src/hooks/useMidnight.ts`
+- **Observable privacy behavior** — authorization is proven with a ZK proof; the raw `secretKey` witness is never shown in the UI or put on the public ledger (see Privacy Claim)
+- **Preprod deploy** — contract address above; frontend defaults to that address via `VITE_CONTRACT_ADDRESS` / `src/config.ts`

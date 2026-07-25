@@ -16,3 +16,5 @@ screenshots/image.png
 public/keys/
 public/zkir/
 public/compiler/
+
+.vercel
