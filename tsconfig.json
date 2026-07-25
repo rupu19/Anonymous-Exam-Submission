@@ -8,5 +8,5 @@
     "skipLibCheck": true,
     "types": ["node"]
   },
-  "include": ["src/**/*", "tests/**/*", "managed/**/*"]
+  "include": ["src/witnesses.ts", "tests/**/*", "managed/**/*"]
 }
