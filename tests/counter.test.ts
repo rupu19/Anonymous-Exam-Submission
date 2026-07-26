@@ -80,52 +80,68 @@ function randomSecret(): Uint8Array {
 }
 
 describe('Anonymous Exam Submission — counter contract', () => {
-  it('circuit logic: getCount returns public ledger count after init', async () => {
-    const sim = new CounterSimulator(randomSecret());
-    expect(sim.getLedger().count).toBe(0n);
-    expect(await sim.getCount()).toBe(0n);
+  describe('a) Circuit logic', () => {
+    it('getCount returns the public ledger count after init', async () => {
+      const sim = new CounterSimulator(randomSecret());
+      expect(sim.getLedger().count).toBe(0n);
+      expect(await sim.getCount()).toBe(0n);
+    });
   });
 
-  it('state transitions: increment then reset update public count', async () => {
-    const sim = new CounterSimulator(randomSecret());
-    const afterInc = await sim.increment(5n);
-    expect(afterInc.count).toBe(5n);
-    expect(afterInc.round).toBeGreaterThan(0n);
+  describe('b) State transitions', () => {
+    it('increment then reset update public count as expected', async () => {
+      const sim = new CounterSimulator(randomSecret());
+      const afterInc = await sim.increment(5n);
+      expect(afterInc.count).toBe(5n);
+      expect(afterInc.round).toBeGreaterThan(0n);
 
-    const afterSecond = await sim.increment(3n);
-    expect(afterSecond.count).toBe(8n);
+      const afterSecond = await sim.increment(3n);
+      expect(afterSecond.count).toBe(8n);
 
-    const afterReset = await sim.reset();
-    expect(afterReset.count).toBe(0n);
+      const afterReset = await sim.reset();
+      expect(afterReset.count).toBe(0n);
+    });
+
+    it('rejects increment from an unauthorized secret key', async () => {
+      const ownerSk = randomSecret();
+      const attackerSk = randomSecret();
+      const sim = new CounterSimulator(ownerSk);
+
+      sim.switchUser(attackerSk);
+      await expect(sim.increment(1n)).rejects.toThrow(/unauthorized/i);
+    });
   });
 
-  it('private inputs are never exposed on the public ledger', async () => {
-    const secretKey = randomSecret();
-    const sim = new CounterSimulator(secretKey);
+  describe('c) Privacy', () => {
+    it('private secretKey is never exposed on the public ledger', async () => {
+      const secretKey = randomSecret();
+      const sim = new CounterSimulator(secretKey);
 
-    await sim.increment(7n);
-    const publicLedger = sim.getLedger();
-    const privateState = sim.getPrivateState();
+      await sim.increment(7n);
+      const publicLedger = sim.getLedger();
+      const privateState = sim.getPrivateState();
 
-    // Secret stays only in private state
-    expect(privateState.secretKey).toEqual(secretKey);
+      // Secret stays only in private state
+      expect(privateState.secretKey).toEqual(secretKey);
 
-    // Ledger never stores the raw secret key
-    expect(Buffer.from(publicLedger.owner).equals(Buffer.from(secretKey))).toBe(
-      false,
-    );
+      // Ledger never stores the raw secret key
+      expect(
+        Buffer.from(publicLedger.owner).equals(Buffer.from(secretKey)),
+      ).toBe(false);
 
-    // Owner commitment is 32 bytes and distinct from the secret
-    expect(publicLedger.owner).toHaveLength(32);
-    expect(publicLedger.count).toBe(7n);
-  });
+      // Owner commitment is 32 bytes and distinct from the secret
+      expect(publicLedger.owner).toHaveLength(32);
+      expect(publicLedger.count).toBe(7n);
 
-  it('rejects increment from unauthorized secret key', async () => {
-    const ownerSk = randomSecret();
-    const attackerSk = randomSecret();
-    const sim = new CounterSimulator(ownerSk);
-
-    sim.switchUser(attackerSk);
-    await expect(sim.increment(1n)).rejects.toThrow(/unauthorized/i);
+      // Public ledger JSON must not embed the raw secret bytes
+      const ledgerSnapshot = JSON.stringify({
+        count: publicLedger.count.toString(),
+        round: publicLedger.round.toString(),
+        owner: Array.from(publicLedger.owner),
+      });
+      expect(ledgerSnapshot).not.toContain(
+        JSON.stringify(Array.from(secretKey)),
+      );
+    });
   });
 });
