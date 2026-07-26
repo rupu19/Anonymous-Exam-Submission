@@ -1,0 +1,7 @@
+# Run once (you will paste/create the token yourself — do not share it in chat):
+#   1) Open https://vercel.com/account/tokens → Create
+#   2) Then in this folder run:
+#        gh secret set VERCEL_TOKEN
+#   3) Re-run Actions: gh workflow run "CI/CD"
+#
+# Org/project IDs are already in the workflow. Rotate the token anytime later.

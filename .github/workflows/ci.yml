@@ -68,12 +68,13 @@ jobs:
       - name: Deploy to Vercel (production)
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: team_IdqO1V7jYj1E9x6fdkfGOTsE
+          VERCEL_PROJECT_ID: prj_Q3vJASgCEHVGm3KGfIngjBPo7kXd
         run: |
-          if [ -z "$VERCEL_TOKEN" ] || [ -z "$VERCEL_ORG_ID" ] || [ -z "$VERCEL_PROJECT_ID" ]; then
-            echo "::warning::Vercel secrets missing — production build succeeded; live deploy skipped."
-            echo "Add GitHub secrets: VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID"
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "::warning::VERCEL_TOKEN secret missing — production build succeeded; live deploy skipped."
+            echo "Create a token at https://vercel.com/account/tokens then run:"
+            echo "  gh secret set VERCEL_TOKEN"
             exit 0
           fi
           npm i -g vercel@latest
