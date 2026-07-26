@@ -55,7 +55,20 @@ npm test
 ```
 
 ## CI/CD
-On every push to `main` and every pull request, GitHub Actions (`.github/workflows/ci.yml`) checks out the repo, installs Node.js v22, installs dependencies, runs `compact compile`, and executes the Vitest suite. The CI badge at the top of this README reflects the latest workflow status.
+This repo uses a full **CI/CD** pipeline in GitHub Actions (`.github/workflows/ci.yml`):
+
+| Stage | Job | What it does |
+|-------|-----|----------------|
+| **CI** | `CI — compile & test` | Checkout → Node 22 → `npm ci` → `compact compile` → `npm test` (runs on every push to `main` and every PR) |
+| **CD** | `CD — build & deploy` | After CI passes on `main`: production `npm run build`, then deploy to Vercel production |
+
+Badge at the top of this README reflects the latest workflow status:  
+![CI](https://github.com/rupu19/Anonymous-Exam-Submission/actions/workflows/ci.yml/badge.svg)
+
+### CI/CD pipeline Screenshot
+![CI/CD pipeline](screenshots/cicd-pipeline.png)
+
+> After the Actions run shows both **CI** and **CD** green, save a screenshot here as `screenshots/cicd-pipeline.png`.
 
 ## Product Proposal
 See PROPOSAL.md
