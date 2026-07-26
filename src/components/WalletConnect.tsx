@@ -55,9 +55,10 @@ export const WalletConnect: FC<Props> = ({
           <p className="muted">Connect Lace on Midnight Preprod to call the exam counter circuit.</p>
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary btn-block"
             onClick={onConnect}
             disabled={status === 'connecting'}
+            aria-busy={status === 'connecting'}
           >
             {status === 'connecting' ? 'Connecting…' : 'Connect Lace wallet'}
           </button>
