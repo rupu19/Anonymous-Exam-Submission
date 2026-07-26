@@ -114,3 +114,6 @@ https://youtu.be/2cqf9C8fBq8
 ├── README.md
 └── package.json
 ```
+
+## Level 3 checklist
+See LEVEL3.md for the submission checklist.
