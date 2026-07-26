@@ -1,6 +1,6 @@
 {
   "name": "anonymous-exam-submission",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
   "type": "module",
   "description": "Anonymous Exam Submission — Midnight Compact counter with React + Lace frontend",
