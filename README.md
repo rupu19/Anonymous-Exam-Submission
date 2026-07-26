@@ -226,7 +226,7 @@ Open to developers who have completed Level 1 or have equivalent experience, wit
 | **Preprod contract address** | `afcffcebb57c90948e51acfde87e30d970d39dda004aaed058ede9df121f505c` |
 | **Demo video** | https://youtu.be/U48CDxdJTyw |
 | **Product proposal** | [PROPOSAL.md](./PROPOSAL.md) |
-| **CI** | ![CI](https://github.com/rupu19/Anonymous-Exam-Submission/actions/workflows/ci.yml/badge.svg) |
+| **CI/CD** | ![CI](https://github.com/rupu19/Anonymous-Exam-Submission/actions/workflows/ci.yml/badge.svg) |
 
 ### Submission Checklist
 - [x] 3+ tests passing (circuit, state, privacy) — `npm test`
