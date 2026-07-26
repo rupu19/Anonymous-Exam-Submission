@@ -33,9 +33,16 @@ body {
 }
 
 .app-shell {
-  width: min(960px, calc(100% - 2rem));
+  width: min(960px, calc(100% - 1.25rem));
   margin: 0 auto;
-  padding: 2.5rem 0 3.5rem;
+  padding: 1.5rem 0 3rem;
+}
+
+@media (min-width: 640px) {
+  .app-shell {
+    width: min(960px, calc(100% - 2rem));
+    padding: 2.5rem 0 3.5rem;
+  }
 }
 
 .hero {
@@ -68,6 +75,38 @@ body {
   line-height: 1.55;
 }
 
+.privacy-banner {
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.15rem;
+  border-left: 3px solid var(--sea);
+  background: rgba(15, 110, 106, 0.08);
+  border-radius: 0 12px 12px 0;
+  animation: rise 0.75s ease both;
+}
+
+.privacy-banner h2 {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--sea-deep);
+}
+
+.privacy-banner ul {
+  margin: 0;
+  padding-left: 1.15rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.privacy-banner li + li {
+  margin-top: 0.35rem;
+}
+
+.privacy-banner code {
+  font-size: 0.85em;
+}
+
 .layout {
   display: grid;
   gap: 1.25rem;
@@ -96,6 +135,7 @@ body {
 
 .panel-head {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
@@ -193,6 +233,16 @@ code {
   background: var(--sea-deep);
 }
 
+.btn-block {
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .btn-block {
+    width: auto;
+  }
+}
+
 .btn-ghost {
   background: transparent;
   color: var(--ink);
@@ -268,6 +318,12 @@ code {
   color: var(--ink-soft);
   font-size: 0.9rem;
   animation: rise 0.9s ease both;
+}
+
+.footer-note {
+  margin: 0.4rem 0 0;
+  max-width: 52ch;
+  line-height: 1.45;
 }
 
 @keyframes rise {
