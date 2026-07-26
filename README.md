@@ -80,7 +80,7 @@ netlify deploy --prod --dir=dist
 The live app reads `VITE_CONTRACT_ADDRESS` (defaults to the Preprod address above).
 
 ## Demo Video
-https://youtu.be/2cqf9C8fBq8
+https://youtu.be/U48CDxdJTyw
 
 ## Screenshots
 
