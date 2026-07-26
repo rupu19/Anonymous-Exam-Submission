@@ -17,6 +17,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
+    "verify:level3": "node scripts/verify-level3.mjs",
     "network": "echo \"Use mn-demo for network deploy helpers: cd mn-demo && npm run network\""
   },
   "dependencies": {
