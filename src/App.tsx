@@ -16,6 +16,23 @@ export default function App() {
         </p>
       </header>
 
+      <aside className="privacy-banner" aria-labelledby="privacy-heading">
+        <h2 id="privacy-heading">Privacy behavior</h2>
+        <ul>
+          <li>
+            <strong>Public:</strong> counter value, round, owner commitment hash, tx metadata
+          </li>
+          <li>
+            <strong>Private:</strong> your <code>secretKey</code> witness — never shown here or
+            stored raw on-chain
+          </li>
+          <li>
+            <strong>Proved without revealing:</strong> you know the secret matching the on-chain
+            owner commitment
+          </li>
+        </ul>
+      </aside>
+
       <main className="layout">
         <WalletConnect
           status={midnight.walletStatus}
@@ -39,6 +56,10 @@ export default function App() {
       <footer className="footer">
         <p>
           Network: <strong>{midnight.networkId}</strong>
+        </p>
+        <p className="footer-note">
+          Only public results appear after a circuit call. Private inputs stay in the proof,
+          not in this UI.
         </p>
       </footer>
     </div>
