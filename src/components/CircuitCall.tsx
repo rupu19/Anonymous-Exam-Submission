@@ -20,6 +20,10 @@ export const CircuitCall: FC<Props> = ({
   contractAddress,
   onCall,
 }) => {
+  const disabledReason = !enabled
+    ? 'Connect Lace wallet first to call the circuit.'
+    : null;
+
   return (
     <section className="panel circuit-panel" aria-labelledby="circuit-heading">
       <div className="panel-head">
@@ -34,14 +38,17 @@ export const CircuitCall: FC<Props> = ({
 
       <p className="contract-line">
         <span className="label">Contract</span>
-        <code title={contractAddress}>{contractAddress.slice(0, 12)}…{contractAddress.slice(-10)}</code>
+        <code title={contractAddress}>
+          {contractAddress.slice(0, 12)}…{contractAddress.slice(-10)}
+        </code>
       </p>
 
       <button
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary btn-block"
         onClick={onCall}
         disabled={!enabled || isProving}
+        aria-busy={isProving}
       >
         {status === 'proving'
           ? 'Generating proof…'
@@ -49,6 +56,12 @@ export const CircuitCall: FC<Props> = ({
             ? 'Submitting on-chain…'
             : 'Call getCount circuit'}
       </button>
+
+      {disabledReason && !isProving && (
+        <p className="hint" role="status">
+          {disabledReason}
+        </p>
+      )}
 
       {isProving && (
         <div className="loading-block" role="status" aria-live="polite">
@@ -61,11 +74,13 @@ export const CircuitCall: FC<Props> = ({
         </div>
       )}
 
-      <p className="privacy-label">Proved without revealing your input</p>
+      <p className="privacy-label">
+        Proved without revealing your input — only the public count / tx id will appear below.
+      </p>
 
       {result && status === 'success' && (
         <div className="result-block" role="status">
-          <h3>On-chain result</h3>
+          <h3>On-chain result (public only)</h3>
           <p>{result.message}</p>
           {result.count !== undefined && (
             <p>
