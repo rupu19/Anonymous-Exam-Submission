@@ -68,7 +68,8 @@ Badge at the top of this README reflects the latest workflow status:
 ### CI/CD pipeline Screenshot
 ![CI/CD pipeline](screenshots/cicd-pipeline.png)
 
-> After the Actions run shows both **CI** and **CD** green, save a screenshot here as `screenshots/cicd-pipeline.png`.
+### CI/CD checks passed
+![CI/CD checks passed](screenshots/cicd-checks-passed.png)
 
 ## Product Proposal
 See PROPOSAL.md
@@ -105,6 +106,15 @@ The live app reads `VITE_CONTRACT_ADDRESS` (defaults to the Preprod address abov
 
 ### Successful Contract Deployed Screenshot
 ![Successful Contract Deployed](screenshots/deployed-contract-address.png)
+
+### Tests passing (Level 3)
+![Tests passing](screenshots/test-output-passing.png)
+
+### CI/CD pipeline green (Level 3)
+![CI/CD pipeline](screenshots/cicd-pipeline.png)
+
+### All CI/CD checks passed (Level 3)
+![CI/CD checks passed](screenshots/cicd-checks-passed.png)
 
 ## Project layout
 ```

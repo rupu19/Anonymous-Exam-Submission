@@ -8,5 +8,5 @@
 - [x] Privacy Model documented
 - [x] PROPOSAL.md filled
 - [x] Production build succeeds
-- [ ] Screenshot of green CI/CD Actions run → `screenshots/cicd-pipeline.png`
+- [x] Screenshot of green CI/CD Actions run → `screenshots/cicd-pipeline.png`
 - [x] Demo video: https://youtu.be/U48CDxdJTyw
